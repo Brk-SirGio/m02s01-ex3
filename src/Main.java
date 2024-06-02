@@ -1,15 +1,31 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        System.out.print("Digite o tempo (em segundos) que o veículo levou para percorrer 1 metro: ");
+        double tempo = scanner.nextDouble();
+
+        // Distância entre as placas
+        double distancia = 1.0; // em metros
+
+        // Calcula a velocidade média (em metros por segundo)
+        double velocidadeMedia = calcularVelocidadeMedia(distancia, tempo);
+
+        // Exibe a velocidade média
+        System.out.printf("A velocidade média do veículo é %.2f metros por segundo.%n", velocidadeMedia);
+
+        // Fecha o scanner
+        scanner.close();
     }
-}
+
+    // Método para calcular a velocidade média
+    public static double calcularVelocidadeMedia(double distancia, double tempo) {
+        // Validação se o tempo é maior que zero para evitar divisão por zero
+        if (tempo <= 0) {
+            throw new IllegalArgumentException("O tempo deve ser maior que zero.");
+        }
+
+        return distancia / tempo;
+    }}
